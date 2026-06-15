@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'" />
+  <title></title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="app" class="anchor-top">
+  <div id="island" class="island island--compact anchor-top" data-mode="clock">
+    <div class="island__compact">
+      <div class="island__compact-left" id="compact-left"></div>
+      <div class="island__compact-center" id="compact-center"></div>
+      <div class="island__compact-right" id="compact-right"></div>
+    </div>
+
+    <div class="island__expanded">
+      <div class="panel panel--clock" data-panel="clock">
+        <div class="clock-display">
+          <span class="clock-time" id="clock-time">00:00</span>
+          <span class="clock-seconds" id="clock-seconds">00</span>
+        </div>
+        <div class="clock-date" id="clock-date"></div>
+        <div class="clock-weather">
+          <span class="weather-icon">☀️</span>
+          <span id="weather-temp">24°C</span>
+          <span class="weather-sep">·</span>
+          <span id="weather-city">...</span>
+        </div>
+      </div>
+
+      <div class="panel panel--media" data-panel="media">
+        <div class="media-art" id="media-art">
+          <div class="media-art__inner">
+            <div class="equalizer" id="equalizer">
+              <span></span><span></span><span></span><span></span><span></span>
+            </div>
+          </div>
+        </div>
+        <div class="media-info">
+          <div class="media-app" id="media-app"></div>
+          <div class="media-title" id="media-title"></div>
+          <div class="media-artist" id="media-artist"></div>
+          <div class="media-progress">
+            <div class="media-progress__bar" id="progress-bar"></div>
+          </div>
+          <div class="media-time">
+            <span id="media-current">1:24</span>
+            <span id="media-total">3:20</span>
+          </div>
+        </div>
+        <div class="media-controls">
+          <button class="ctrl-btn" id="btn-prev" data-i18n-title="mediaPrev">⏮</button>
+          <button class="ctrl-btn ctrl-btn--play" id="btn-play" data-i18n-title="mediaPlay">▶</button>
+          <button class="ctrl-btn" id="btn-next" data-i18n-title="mediaNext">⏭</button>
+        </div>
+      </div>
+
+      <div class="panel panel--notification" data-panel="notification">
+        <div class="notif-icon" id="notif-icon">💬</div>
+        <div class="notif-content">
+          <div class="notif-app" id="notif-app"></div>
+          <div class="notif-title" id="notif-title"></div>
+          <div class="notif-body" id="notif-body"></div>
+        </div>
+      </div>
+
+      <div class="panel panel--audio" data-panel="audio">
+        <div class="audio-scroll">
+          <div class="audio-section">
+            <div class="audio-section__title" data-i18n="audioBluetooth"></div>
+            <div class="bt-list" id="bt-list">
+              <div class="audio-empty" data-i18n="audioLoading"></div>
+            </div>
+          </div>
+          <div class="audio-section">
+            <div class="audio-section__title" data-i18n="audioOutput"></div>
+            <select class="audio-select" id="audio-output-select"></select>
+            <div class="audio-row">
+              <button class="audio-mute-btn" id="btn-playback-mute" data-i18n-title="audioMutePlayback">🔊</button>
+              <input type="range" class="audio-slider" id="playback-volume" min="0" max="100" value="50" />
+              <span class="audio-level" id="playback-volume-label">50%</span>
+            </div>
+          </div>
+          <div class="audio-section">
+            <div class="audio-section__title" data-i18n="audioInput"></div>
+            <select class="audio-select" id="audio-input-select"></select>
+            <div class="audio-row">
+              <button class="audio-mute-btn" id="btn-recording-mute" data-i18n-title="audioMuteMic">🎤</button>
+              <input type="range" class="audio-slider" id="recording-volume" min="0" max="100" value="50" />
+              <span class="audio-level" id="recording-volume-label">50%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel panel--calendar" data-panel="calendar">
+        <div class="calendar-scroll">
+          <div class="calendar-header">
+            <button class="cal-nav-btn" id="btn-cal-prev" data-i18n-title="calPrev">‹</button>
+            <span class="calendar-month" id="cal-month-label"></span>
+            <button class="cal-nav-btn" id="btn-cal-next" data-i18n-title="calNext">›</button>
+          </div>
+          <div class="calendar-weekdays">
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+          </div>
+          <div class="calendar-grid" id="cal-grid"></div>
+          <div class="calendar-day-panel hidden" id="cal-day-panel">
+            <div class="calendar-day-title" id="cal-day-title"></div>
+            <div class="calendar-events" id="cal-events"></div>
+            <div class="calendar-compose">
+              <input type="time" class="cal-time-input" id="cal-event-time" value="09:00" />
+              <input type="text" class="cal-text-input" id="cal-event-text" data-i18n-placeholder="calPlanPlaceholder" />
+              <button class="cal-add-btn" id="btn-cal-add" data-i18n-title="calAdd">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel panel--gemini" data-panel="gemini">
+        <div class="gemini-scroll" id="gemini-scroll">
+          <div class="gemini-header">
+            <span class="gemini-title" data-i18n="tabGemini"></span>
+            <button class="gemini-clear-btn" id="btn-gemini-clear" data-i18n="geminiClear" data-i18n-title="geminiClearTitle"></button>
+          </div>
+          <div class="gemini-messages" id="gemini-messages"></div>
+        </div>
+        <div class="gemini-compose" id="gemini-compose">
+          <textarea id="gemini-input" class="gemini-input" data-i18n-placeholder="geminiPlaceholder" rows="1"></textarea>
+          <button class="gemini-send-btn" id="btn-gemini-send" title="↑">↑</button>
+        </div>
+      </div>
+
+      <div class="panel panel--notes" data-panel="notes">
+        <div class="notes-scroll">
+          <div class="notes-compose">
+            <textarea id="note-input" class="notes-input" data-i18n-placeholder="notesPlaceholder" rows="2"></textarea>
+            <button class="notes-paste-btn" id="btn-paste-note" data-i18n-title="notesPaste">⎘</button>
+            <button class="notes-add-btn" id="btn-add-note" data-i18n-title="notesAdd">+</button>
+          </div>
+          <div class="notes-list" id="notes-list"></div>
+        </div>
+      </div>
+
+      <div class="panel panel--settings" data-panel="settings">
+        <div class="settings-scroll">
+          <div class="settings-section">
+            <div class="settings-title" data-i18n="settingsDisplays"></div>
+            <div class="settings-sub" data-i18n="settingsDisplaysSub"></div>
+            <div class="settings-list" id="display-list"></div>
+          </div>
+          <div class="settings-section">
+            <div class="settings-title" data-i18n="settingsLanguage"></div>
+            <div class="settings-sub" data-i18n="settingsLanguageSub"></div>
+            <select class="settings-text-input settings-select" id="settings-locale"></select>
+          </div>
+          <div class="settings-section">
+            <div class="settings-title" data-i18n="settingsAppearance"></div>
+            <div class="settings-sub" data-i18n="settingsAppearanceSub"></div>
+            <label class="settings-check"><input type="checkbox" id="feat-clock" checked /><span data-i18n="featClock"></span></label>
+            <label class="settings-check"><input type="checkbox" id="feat-weather" checked /><span data-i18n="featWeather"></span></label>
+            <label class="settings-check"><input type="checkbox" id="feat-media" checked /><span data-i18n="featMedia"></span></label>
+            <label class="settings-check"><input type="checkbox" id="feat-timer" checked /><span data-i18n="featTimer"></span></label>
+            <label class="settings-check"><input type="checkbox" id="feat-notes" checked /><span data-i18n="featNotes"></span></label>
+            <label class="settings-check"><input type="checkbox" id="feat-audio" checked /><span data-i18n="featAudio"></span></label>
+            <label class="settings-check"><input type="checkbox" id="feat-calendar" checked /><span data-i18n="featCalendar"></span></label>
+            <label class="settings-check"><input type="checkbox" id="feat-gemini" checked /><span data-i18n="featGemini"></span></label>
+          </div>
+          <div class="settings-section">
+            <div class="settings-title" data-i18n="settingsSystem"></div>
+            <div class="settings-sub" data-i18n="settingsSystemSub"></div>
+            <label class="settings-check"><input type="checkbox" id="feat-launch-startup" /><span data-i18n="featLaunchAtStartup"></span></label>
+            <label class="settings-check"><input type="checkbox" id="feat-always-on-top" checked /><span data-i18n="featAlwaysOnTop"></span></label>
+          </div>
+          <div class="settings-section">
+            <div class="settings-title" data-i18n="settingsGemini"></div>
+            <div class="settings-sub" data-i18n="settingsGeminiSub"></div>
+            <input type="password" class="settings-text-input" id="gemini-api-key" autocomplete="off" />
+          </div>
+          <div class="settings-footer">
+            <a href="#" class="settings-follow-link" id="settings-follow-link" data-i18n="settingsFollow"></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel panel--timer" data-panel="timer">
+        <div class="timer-ring">
+          <svg viewBox="0 0 100 100">
+            <circle class="timer-ring__bg" cx="50" cy="50" r="42" />
+            <circle class="timer-ring__fill" id="timer-ring-fill" cx="50" cy="50" r="42" />
+          </svg>
+          <div class="timer-value" id="timer-value" title="">05:00</div>
+          <input type="text" class="timer-edit-input hidden" id="timer-edit-input" inputmode="numeric" spellcheck="false" />
+        </div>
+        <div class="timer-label" data-i18n="timerLabel"></div>
+        <div class="timer-actions">
+          <button class="ctrl-btn ctrl-btn--sm" id="btn-timer-toggle">⏸</button>
+          <button class="ctrl-btn ctrl-btn--sm" id="btn-timer-reset">↺</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="island__footer">
+      <div class="island__indicators" id="indicators">
+        <span class="dot active" data-mode="clock" data-i18n-title="tabClock"></span>
+        <span class="dot" data-mode="media" data-i18n-title="tabMedia"></span>
+        <span class="dot" data-mode="timer" data-i18n-title="tabTimer"></span>
+        <span class="dot" data-mode="notes" data-i18n-title="tabNotes"></span>
+        <span class="dot" data-mode="audio" data-i18n-title="tabAudio"></span>
+        <span class="dot" data-mode="calendar" data-i18n-title="tabCalendar"></span>
+        <span class="dot" data-mode="gemini" data-i18n-title="tabGemini"></span>
+      </div>
+      <button class="island__settings-btn" id="btn-settings" data-i18n-title="tabSettings">⚙</button>
+    </div>
+  </div>
+  </div>
+
+  <script src="../i18n.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

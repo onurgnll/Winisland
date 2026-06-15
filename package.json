@@ -1,0 +1,86 @@
+{
+  "name": "dynwin",
+  "productName": "Winisland",
+  "version": "1.0.0",
+  "description": "Windows Dynamic Island - Masaüstü ada",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --enable-logging",
+    "build": "electron-builder --win",
+    "build:portable": "electron-builder --win portable",
+    "build:installer": "electron-builder --win nsis"
+  },
+  "keywords": [
+    "electron",
+    "dynamic-island",
+    "desktop"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "koffi": "^3.0.2",
+    "windows-media-sessions": "^1.0.3"
+  },
+  "devDependencies": {
+    "electron": "35.4.0",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "com.winisland.app",
+    "productName": "Winisland",
+    "icon": "appicon.png",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "**/*",
+      "!dist/**",
+      "!**/.git/**",
+      "!**/.cursor/**"
+    ],
+    "asarUnpack": [
+      "node_modules/windows-media-sessions/**"
+    ],
+    "extraResources": [
+      {
+        "from": "scripts",
+        "to": "scripts",
+        "filter": [
+          "**/*"
+        ]
+      },
+      {
+        "from": "node_modules/windows-media-sessions/bin/win-x64/windows-media-sessions-backend.exe",
+        "to": "bin/windows-media-sessions-backend.exe"
+      }
+    ],
+    "win": {
+      "icon": "appicon.png",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "include": "build/installer.nsh"
+    },
+    "portable": {
+      "artifactName": "Winisland-Portable-${version}.exe"
+    }
+  }
+}
