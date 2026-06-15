@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/preview.gif" alt="Winisland önizleme" width="100%">
+</p>
+
 # Winisland
 
 [English](README.md) | **Türkçe**
@@ -39,7 +43,7 @@ Bileşen varsayılan olarak üst ortada konumlanır. **Üst**, **alt**, **sol** 
 
 ### Hazır yürütülebilir dosya
 
-1. [Releases](https://github.com/onurgnll/dynwin/releases) sayfasından en güncel sürümü indirin.
+1. [Releases](https://github.com/onurgnll/Winisland/releases) sayfasından en güncel sürümü indirin.
 2. **Winisland Setup … .exe** dosyasını çalıştırın (masaüstü kısayolu içeren standart kurulum).
 3. Uygulamayı başlatın. Sistem tepsisine ikon eklenir; çıkmak için sağ tık → **Çıkış**.
 
@@ -48,8 +52,8 @@ Bileşen varsayılan olarak üst ortada konumlanır. **Üst**, **alt**, **sol** 
 ### Kaynaktan çalıştırma
 
 ```bash
-git clone https://github.com/onurgnll/dynwin.git
-cd dynwin
+git clone https://github.com/onurgnll/Winisland.git
+cd Winisland
 npm install
 npm start
 ```

@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/preview.gif" alt="Winisland preview" width="100%">
+</p>
+
 # Winisland
 
 **English** | [Türkçe](README.tr.md)
@@ -39,7 +43,7 @@ The widget defaults to the top-center position. It can be dragged and snapped to
 
 ### Pre-built executable
 
-1. Download the latest release from [Releases](https://github.com/onurgnll/dynwin/releases).
+1. Download the latest release from [Releases](https://github.com/onurgnll/Winisland/releases).
 2. Run **Winisland Setup … .exe** (standard installer with desktop shortcut).
 3. Launch the application. A system tray icon is added; right-click and select **Exit** to quit.
 
@@ -48,8 +52,8 @@ On first launch, the widget appears at the top center of the primary display.
 ### Build from source
 
 ```bash
-git clone https://github.com/onurgnll/dynwin.git
-cd dynwin
+git clone https://github.com/onurgnll/Winisland.git
+cd Winisland
 npm install
 npm start
 ```
